@@ -23,6 +23,8 @@ int main()
     return 0;
 }
 
+
+
 //Arithmetic series
 #include <stdio.h>
 int main()
@@ -41,4 +43,158 @@ int main()
  }
  printf("sum of series A.P is :%f ",sum);
  return 0;
+}
+
+
+
+//sum of first 10 terms of sequence 1/n2
+#include <stdio.h>
+#include<math.h>
+int main()
+{
+ int n,i;
+ double sum=0.0,ser;
+ printf("Enter the sum of the n terms of the sequence=");
+ scanf("%d",&n);
+ for(i= 1;i<= n; i++)
+ {
+     ser=1/pow(i,2);
+     sum=sum+ser;
+ }
+    printf("sum of the first %d terms of the sequence is=%lf",n,sum);
+    return 0;
+}
+
+
+//intersection of two sets
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+    int a[100],b[100],c[100],n1,n2,i,j,k=0;
+    printf("enter number of element of set a=");
+    scanf("%d",&n1);
+    printf("enter %d number of elements of set a=",n1);
+    for(i=0;i<n1;i++)
+        scanf("%d",&a[i]);
+    printf("enter %d number of elements of set b=");
+    scanf("%d",&n2);
+    printf("enter %d number of elements of set b=",n2);
+    for(i=0;i<n2;i++)
+    scanf("%d",&b[i]);
+    for(i=0;i<n1;i++)
+    {
+        for(j=0;j<n2;j++)
+        {
+            if(a[i]==b[j])
+            {
+                c[k]=a[i];
+                k++;
+                break;
+            }
+        }
+    }
+    printf("\n intersection of set a and b is=");
+    for(i=0;i<k;i++)
+        printf("%d\t",c[i]);
+}
+
+
+//power set of a given set
+#include<stdio.h>
+#include<math.h>
+void printpowerset(char*set,int set_size)
+{
+    unsigned int pow_set_size=pow(2, set_size);
+    int counter,j;
+    for(counter=0;counter<pow_set_size;counter++)
+    {
+        for(j=0;j<set_size;j++)
+        {
+            if(counter & (1<<j))
+                printf("%c",set[j]);
+        }
+        printf("\n");
+    }
+}
+int main()
+{
+    char set[]={'a','b','c'};
+    printpowerset(set,3);
+    return 0;
+}
+
+
+
+//factorial of a number using recursion
+#include<stdio.h>
+#include<conio.h>
+long int factorial(int n);
+int main() {
+    int n;
+    printf("Enter a positive integer: ");
+    scanf("%d",&n);
+    printf("Factorial of %d = %d", n, factorial(n));
+    return 0;
+}
+
+long int factorial(int n) {
+    if (n>=1)
+        return n*factorial(n-1);
+    else
+        return 1;
+}
+
+
+
+//fibonacci series using recursion
+#include <stdio.h>
+int fibonacci(int n) {
+   if(n == 0)
+      return 0;
+   else if(n == 1)
+      return 1;
+   else
+      return (fibonacci(n-1) + fibonacci(n-2));
+}
+
+int main() {
+   int n;
+
+   printf("Enter the number of terms\n");
+   scanf("%d", &n);
+
+   printf("Fibonacci Series: ");
+   
+   for (int i = 0; i < n; i++) {
+      printf("%d ", fibonacci(i));
+   }
+   
+   return 0;
+}
+
+
+//tower of hanoi
+#include <stdio.h>
+#include <stdlib.h>
+
+void towerOfHanoi(int n, char from_rod, char to_rod, char aux_rod)
+{
+    if (n == 1)
+    {
+        printf("\nMove disk 1 from rod %c to rod %c", from_rod, to_rod);
+        return;
+    }
+    towerOfHanoi(n-1, from_rod, aux_rod, to_rod);
+    printf("\nMove Disk %d from rod %c to rod %c", n, from_rod, to_rod);
+    towerOfHanoi(n-1, aux_rod, to_rod, from_rod);
+}
+
+void main()
+{
+    int n = 4;
+    towerOfHanoi(n,'A','C','B');
+
+getch();
 }
