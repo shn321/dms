@@ -198,3 +198,91 @@ void main()
 
 getch();
 }
+
+
+
+//binary search technique
+#include<stdio.h>
+#include<conio.h>
+int main()
+{
+int i,first,last,middle,n,search,array[100];
+printf("enter number of elements \n");
+scanf("%d",&n);
+printf("enter %d integers \n",n);
+for(i=0;i<n;i++)
+scanf("%d",&array[i]);
+printf("Enter value to find\n");
+scanf("%d",&search);
+first=0;
+last=n-1;
+middle=(first+last)/2;
+while(first<=last)
+{
+if (array[middle]<search)
+first=middle+1;
+else if(array[middle]==search)
+{
+printf("%d found at location %d.\n", search, middle+1);
+break;
+}
+else
+last=middle-1;
+middle=(first+last)/2;
+}
+if (first>last)
+printf("Not found! %d is not present in the list.\n", search);
+return 0;
+}
+
+
+//merge sort technique
+#include<stdio.h>
+#include<conio.h>
+int a[20];
+void merge_sort (int[],int,int);
+void merge (int[],int,int,int);
+void main()
+{
+int arr[30],i,n;
+printf("\nEnter no of elements");
+scanf("%d",&n);
+printf("\nEnter %d value",n);
+for(i=0;i<n;i++)
+scanf("%d",&arr[i]);
+printf("\nBefore sorting elements are");
+for(i=0;i<n;i++)
+printf("%d ",arr[i]);
+merge_sort(arr,0,n-1);
+printf("\nAfter sorting elements are");
+for(i=0;i<n;i++)
+printf("%d ",arr[i]);
+}
+void merge_sort(int arr[],int f,int l)
+{
+int mid;
+if(f<l)
+{
+mid =(f+l)/2;
+merge_sort(arr,f,mid);
+merge_sort(arr,mid+1,l);
+merge(arr,f,mid,l);
+}
+}
+void merge(int arr[],int low,int mid,int high)
+{
+int l1,l2,i;
+for(l1=low,l2=mid+1,i=low;l1<=mid&&l2<=high;i++)
+{
+if (arr[l1]<=arr[l2])
+a[i]=arr[l1++];
+else
+a[i]=arr[l2++];
+}
+while(l1<=mid)
+a[i++]=arr[l1++];
+while(l2<=high)
+a[i++]=arr[l2++];
+for(i=low;i<=high;i++)
+arr[i]=a[i];
+}
