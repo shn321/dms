@@ -23,3 +23,22 @@ int main()
     return 0;
 }
 
+//Arithmetic series
+#include <stdio.h>
+int main()
+{
+ int i; float a,n,d,sum=0;
+ printf(" Enter 1st no of series: \n");
+ scanf("%f", &a);
+ printf(" Enter total no's in series: \n");
+ scanf("%f", &n);
+ printf("Enter Common Difference: ");
+ scanf("%f", &d);
+ for (int i=0;i<n;i++)
+ {
+ sum = sum + a;
+ a=a+d;
+ }
+ printf("sum of series A.P is :%f ",sum);
+ return 0;
+}
